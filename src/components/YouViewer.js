@@ -373,33 +373,6 @@ class YouViewer extends React.Component {
     });
   };
 
-  // Template for video list grid
-  // videoListGridOptions(
-  //   itemEtag,
-  //   itemThumbUrl,
-  //   itemTitle
-  // ) {
-  //   return (
-  //     `<div
-  //           class="item-list"
-  //           id=${itemEtag}
-  //           onclick="this.showChosenVideo"
-  //         >
-  //           <img
-  //             className="item-list-image"   
-  //             src=${itemThumbUrl}
-  //             alt=${itemTitle}
-  //           >
-  //           <h5
-  //             className="item-title"
-  //             id="item-title"
-  //           >
-  //             ${itemTitle}
-  //           </h5>
-  //         </div>
-  //         `)
-  // };
-
   // Formatting date and time
   formatDateTimeToInputValue(dateTime) {
     let yyyy = dateTime.getFullYear();

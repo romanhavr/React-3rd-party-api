@@ -262,6 +262,9 @@ class DragDrop extends React.Component {
   };
 
   render() {
+    if (!this.GoogleAuth) {
+      return <h1>Loading...</h1>
+    }
     return (
       <div className="content">
         <h1>

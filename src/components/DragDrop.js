@@ -57,14 +57,14 @@ class DragDrop extends React.Component {
       'discoveryDocs': [this.discoveryUrl],
       // 'clientId': '242985755560-8ah2i5rtar01gcrfnc9lr5jj1s1gdsjk.apps.googleusercontent.com',
       'clientId': '242985755560-k6d60p7l9gm5v4bdcup9tooa8v6b1mvm.apps.googleusercontent.com',
-      'callbackURL': "https://react-3rd-party-api.herokuapp.com/drag-drop/auth/google/callback",
+      // 'callbackURL': "https://react-3rd-party-api.herokuapp.com/drag-drop/auth/google/callback",
       'scope': this.SCOPE
     }).then(() => {
       this.GoogleAuth = gapi.auth2.getAuthInstance();
       this.GoogleAuth.isSignedIn.listen(this.googleLoginClick);
 
       this.setSigninStatus();
-    });
+    }).catch(err => console.log(err));
   };
 
   setDefaults() {

@@ -64,7 +64,7 @@ class DragDrop extends React.Component {
       this.GoogleAuth.isSignedIn.listen(this.googleLoginClick);
 
       this.setSigninStatus();
-    }).catch(err => console.log(err));
+    });
   };
 
   setDefaults() {
@@ -235,9 +235,14 @@ class DragDrop extends React.Component {
   };
 
   googleLoginClick() {
+    console.log('click')
     if (this.GoogleAuth.isSignedIn.get()) {
+    console.log('out')
+
       this.GoogleAuth.signOut();
     } else {
+    console.log('in')
+
       this.GoogleAuth.signIn();
     }
   };

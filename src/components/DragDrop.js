@@ -6,6 +6,7 @@ class DragDrop extends React.Component {
   constructor() {
     super()
     this.googleLoginRef = React.createRef();
+    this.googleLogoutRef = React.createRef();
     this.dropAreaRef = React.createRef();
     this.dropExtensionsRef = React.createRef();
     this.previewRef = React.createRef();
@@ -26,9 +27,11 @@ class DragDrop extends React.Component {
     this.uploadFile = this.uploadFile.bind(this);
     this.previewFile = this.previewFile.bind(this);
     this.googleLoginClick = this.googleLoginClick.bind(this);
+    this.googleLogoutClick = this.googleLogoutClick.bind(this);
   }
 
   googleLogin;
+  googleLogout;
   dropArea;
   dropExtensions;
   preview;
@@ -52,12 +55,9 @@ class DragDrop extends React.Component {
 
   initClient() {
     gapi.client.init({
-      // 'apiKey': 'AIzaSyBWpeOYpvTB5vQAbaQYhY4BG5hGYS_dctk',
       'apiKey': 'AIzaSyAhnjJNA4H1jwyyNBJUqnwNMJauUSb-cxQ',
       'discoveryDocs': [this.discoveryUrl],
-      // 'clientId': '242985755560-8ah2i5rtar01gcrfnc9lr5jj1s1gdsjk.apps.googleusercontent.com',
       'clientId': '242985755560-k6d60p7l9gm5v4bdcup9tooa8v6b1mvm.apps.googleusercontent.com',
-      // 'callbackURL': "https://react-3rd-party-api.herokuapp.com/drag-drop/auth/google/callback",
       'scope': this.SCOPE
     }).then(() => {
       this.GoogleAuth = gapi.auth2.getAuthInstance();
@@ -69,6 +69,7 @@ class DragDrop extends React.Component {
 
   setDefaults() {
     this.googleLogin = this.googleLoginRef.current;
+    this.googleLogout = this.googleLogoutRef.current;
     this.dropArea = this.dropAreaRef.current;
     this.dropExtensions = this.dropExtensionsRef.current;
     this.preview = this.previewRef.current;
@@ -236,16 +237,23 @@ class DragDrop extends React.Component {
 
   googleLoginClick() {
     console.log('click')
-    if (this.GoogleAuth.isSignedIn.get()) {
-    console.log('out')
+    // if (this.GoogleAuth.isSignedIn.get()) {
+    // console.log('out')
 
-      this.GoogleAuth.signOut();
-    } else {
-    console.log('in')
+    //   this.GoogleAuth.signOut();
+    // } else {
+    console.log('click in')
 
       this.GoogleAuth.signIn();
-    }
+    // }
   };
+
+  googleLogoutClick() {
+    console.log('click out')
+
+      this.GoogleAuth.signOut();
+
+  }
 
   setSigninStatus() {
     const user = this.GoogleAuth.currentUser.get();
@@ -253,18 +261,17 @@ class DragDrop extends React.Component {
 
     let isAuthorized = user.hasGrantedScopes(this.SCOPE);
     if (isAuthorized) {
-      this.googleLogin.innerHTML = `Sign out <b><u>(` + user.w3.ofa + `)</u></b>`;
+      this.googleLogin.innerHTML = user.w3.ofa ;
+      this.googleLogout.innerHTML = ` Sign out`;
     } else {
       this.googleLogin.innerHTML = `Sign in your&nbsp;
                                 <img src='logo-drive.png'>&nbsp;
                                 Google account.`;
+      this.googleLogout.innerHTML = ``;
     }
   };
 
   render() {
-    if (!this.GoogleAuth) {
-      return <h1>Loading...</h1>
-    }
     return (
       <div className="content">
         <h1>
@@ -275,8 +282,12 @@ class DragDrop extends React.Component {
           className='google-login'
           ref={this.googleLoginRef}
           onClick={this.googleLoginClick}
-        >
-        </div>
+        ></div>
+        <div
+          className='google-login'
+          ref={this.googleLogoutRef}
+          onClick={this.googleLogoutClick}
+        ></div>
         <div className='drop-area' ref={this.dropAreaRef}>
           <h3>Drag and drop file(s) here:</h3>
           <span ref={this.dropExtensionsRef}>

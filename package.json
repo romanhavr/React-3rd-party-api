@@ -2,9 +2,7 @@
   "name": "react-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://romanhavr.github.io/react-app",
   "dependencies": {
-    "gapi-client": "0.0.3",
     "gapi-script": "0.0.5",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",

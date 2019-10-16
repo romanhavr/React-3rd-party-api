@@ -252,7 +252,7 @@ class DragDrop extends React.Component {
     let isAuthorized = user.hasGrantedScopes(this.SCOPE);
     if (isAuthorized) {
       this.googleLogin.innerHTML = user.w3.ofa ;
-      this.googleLogout.innerHTML = ` Sign out`;
+      this.googleLogout.innerHTML = `Sign out`;
     } else {
       this.googleLogin.innerHTML = `Sign in your&nbsp;
                                 <img src='logo-drive.png'>&nbsp;
@@ -292,7 +292,7 @@ class DragDrop extends React.Component {
           onClick={this.butClick}  
         />
         <span ref={this.resultRef} className="result"></span>
-        <div className='uploaded-files' ref={this.uploadedRef}>
+        <div className='uploaded-files' ref={this.uploadedFilesRef}>
           <p>
             Uploaded files:
           <span ref={this.progressRef} className="progress"></span>

@@ -57,11 +57,11 @@ class DragDrop extends React.Component {
   initClient() {
     console.log('init')
     gapi.client.init({
-      'apiKey': 'AIzaSyBWpeOYpvTB5vQAbaQYhY4BG5hGYS_dctk',
-      // 'apiKey': 'AIzaSyAhnjJNA4H1jwyyNBJUqnwNMJauUSb-cxQ',
+      // 'apiKey': 'AIzaSyBWpeOYpvTB5vQAbaQYhY4BG5hGYS_dctk',
+      'apiKey': 'AIzaSyAhnjJNA4H1jwyyNBJUqnwNMJauUSb-cxQ',
       'discoveryDocs': [this.discoveryUrl],
-      'clientId': '242985755560-8ah2i5rtar01gcrfnc9lr5jj1s1gdsjk.apps.googleusercontent.com',
-      // 'clientId': '242985755560-k6d60p7l9gm5v4bdcup9tooa8v6b1mvm.apps.googleusercontent.com',
+      // 'clientId': '242985755560-8ah2i5rtar01gcrfnc9lr5jj1s1gdsjk.apps.googleusercontent.com',
+      'clientId': '242985755560-k6d60p7l9gm5v4bdcup9tooa8v6b1mvm.apps.googleusercontent.com',
       'scope': this.SCOPE
     }).then(() => {
       console.log('then')
